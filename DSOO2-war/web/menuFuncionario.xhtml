@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Menu Funcionarios</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
+        <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        
+        
+            <h1><h:outputText escape="false" value="Bem-vindo! #{FuncionarioMBean.nome}"/></h1>
+
+            <br/>
+            <div class="midButton">
+                <a href="faces/cadastrarQuarto.xhtml">
+                    <button type="button" class="btn btn-outline-dark">Cadastrar Quarto</button>
+                </a>
+            </div>          
+
+            <br/>    
+
+            <div class="midButton">
+                <a href="faces/listaQuartos.xhtml">
+                    <button type="button" class="btn btn-outline-dark">Lista de Quartos</button>
+                </a>
+            </div>    
+            
+            <br/>
+            
+             <div class="midButton">
+                <a href="faces/checkIn.xhtml">
+                    <button type="button" class="btn btn-outline-dark">Check-in de Hóspedes</button>
+                </a>
+            </div> 
+            
+            <br/>
+            
+            <div class="midButton">
+                <a href="faces/checkOut.xhtml">
+                    <button type="button" class="btn btn-outline-dark">Check-out de Hóspedes</button>
+                </a>
+            </div>
+            
+            <br/>
+            
+            <div class="midButton">
+                <a href="faces/cadastroServico.xhtml">
+                    <button type="button" class="btn btn-outline-dark">Cadstro de Serviços</button>
+                </a>
+            </div>
+            <br/>
+            
+            <div class="midButton">
+                <a href="faces/index.xhtml">
+                    <button type="button" class="btn btn-outline-dark">Sair</button>
+                </a>
+            </div>
+            
+                
+             
+    </h:body>
+</html>

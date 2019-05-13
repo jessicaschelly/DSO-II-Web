@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
+        <title>Cadastro de Clientes</title>
+    </h:head>
+    <body>
+<h:form>
+            <h1>Novo cliente</h1>
+            <p>Nome</p>
+            <p><p:inputText title="Nome:" value="#{ClienteMBean.nome}" /></p>
+            <p>Telefone</p>        
+            <p><p:inputText label="Telefone:" value="#{ClienteMBean.telefone}" /></p>
+            <p>CPF</p>
+            <p><p:inputText label="CPF:" value="#{ClienteMBean.cpf}" /></p>
+            <p>Senha</p>
+            <p><p:inputText label="Senha:" value="#{ClienteMBean.senha}" /></p>
+            <p><h:commandButton value="Cadastrar" id="cadastrar" action="#{ClienteMBean.cadastrarCliente()}" styleClass="ui-priority-primary" /></p>
+            <h4><h:outputText escape="false" value="#{ClienteMBean.cpfJahExiste()}"/></h4>
+            <div class="leftButton">
+                <a href="faces/checkIn.xhtml">
+                    <button type="button" class="btn btn-outline-dark">Cancelar</button>
+                </a>
+            </div>         </h:form> 
+    </body>
+</html>
