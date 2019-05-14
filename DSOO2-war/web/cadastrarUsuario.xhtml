@@ -12,20 +12,20 @@ and open the template in the editor.
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
-        <title>Cadastro de Clientes</title>
+        <title>Cadastro de Usuários</title>
     </h:head>
     <body>
-<h:form>
-            <h1>Novo cliente</h1>
+        <h:form>
+            <h1>Novo Usuário</h1>
             <p>Nome</p>
-            <p><p:inputText title="Nome:" value="#{ClienteMBean.nome}" /></p>
+            <p><p:inputText title="Nome:" value="#{ClienteMBean.usuario.nome}" /></p>
             <p>Telefone</p>        
-            <p><p:inputText label="Telefone:" value="#{ClienteMBean.telefone}" /></p>
-            <p>CPF</p>
-            <p><p:inputText label="CPF:" value="#{ClienteMBean.cpf}" /></p>
+            <p><p:inputText label="Telefone:" value="#{ClienteMBean.usuario.telefone}" /></p>
+            <p>Email</p>
+            <p><p:inputText label="Email:" value="#{ClienteMBean.usuario.email}" /></p>
             <p>Senha</p>
-            <p><p:inputText label="Senha:" value="#{ClienteMBean.senha}" /></p>
-            <p><h:commandButton value="Cadastrar" id="cadastrar" action="#{ClienteMBean.cadastrarCliente()}" styleClass="ui-priority-primary" /></p>
+            <p><p:inputText label="Senha:" value="#{ClienteMBean.usuario.senha}" /></p>
+            <p><h:commandButton value="Cadastrar" id="cadastrar" action="#{ClienteMBean.cadastrarUsuario()}" styleClass="ui-priority-primary" /></p>
             <h4><h:outputText escape="false" value="#{ClienteMBean.cpfJahExiste()}"/></h4>
             <div class="leftButton">
                 <a href="faces/checkIn.xhtml">
