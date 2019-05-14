@@ -1,52 +1,49 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
         <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body>
-        
-        
-            <h1><h:outputText escape="false" value="Oh hi #{ClienteMBean.nome}"/></h1>
 
-            <br/>
-            
-            <div class="midButton">
-                <a href="faces/listaServicos.xhtml">
-                    <button type="button" class="btn btn-outline-dark">Solicitar Serviços</button>
-                </a>
-            </div>          
 
-            <br/>    
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Listas de compras"/></h1>
+                <p:dataTable var="cliente" value="#{ListarListas.listasDeCompras}">
+                    <p:column headerText="Id">
+                        <h:outputText value="#{cliente.id}" />
+                    </p:column>
+                    <p:column headerText="Qtd itens">
+                        <h:outputText value="#{cliente.itens.size}" /> 
+                    </p:column>
+                    <p:column headerText="Qtd usuarios">
+                        <h:outputText value="#{cliente.usuarios.size}" />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </f:view>
 
-            <div class="midButton">
-                <a href="faces/listaServicos.xhtml">
-                    <button type="button" class="btn btn-outline-dark">Solicitar Limpeza</button>
-                </a>
-            </div>    
-            
-            <br/>
-            
-             <div class="midButton">
-                <a href="faces/clienteFatura.xhtml">
-                    <button type="button" class="btn btn-outline-dark">Consultar Fatura</button>
-                </a>
-            </div> 
-            
-            <br/>
-            
-            <div class="midButton">
-                <a href="faces/index.xhtml">
-                    <button type="button" class="btn btn-outline-dark">Sair</button>
-                </a>
-            </div>
-            
-            
-                
-             
+        <div class="midButton">
+            <button type="button" class="btn btn-outline-dark" action="#{ListarListas.criarLista()}">Criar lista de compras</button>
+        </div> 
+
+        <br/>
+
+        <div class="midButton">
+            <a href="faces/index.xhtml">
+                <button type="button" class="btn btn-outline-dark">Sair</button>
+            </a>
+        </div>
+
+
+
+
     </h:body>
 </html>
 

@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -19,6 +21,8 @@ import javax.persistence.OneToMany;
  * @author root
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "ListaDeCompras.findByUserId", query = "SELECT l FROM ListaDeCompras l WHERE  :idUsuario in (l.usuarios) ")})
 public class ListaDeCompras implements Serializable {
 
     @ManyToMany(mappedBy = "listasDeCompras")

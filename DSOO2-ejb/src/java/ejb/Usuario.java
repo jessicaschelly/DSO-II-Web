@@ -7,17 +7,24 @@ package ejb;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author root
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
+    @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,6 +33,7 @@ public class Usuario implements Serializable {
 
     private String senha;
 
+    @Column(unique = true)
     private String email;
 
     private String telefone;

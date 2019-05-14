@@ -11,34 +11,32 @@
         <title>Login de Clientes</title>
     </h:head>
     <h:body>
-        
-        <div class="midButton">
-            
-                <h1>Login de Clientes</h1>
-            
-                        
-            <br/>
-            
-            
-                <h:form>
-                    <div class="form-group">
-                        <label for="quarto">Numero do Quarto</label>
-                        <h:inputText id="quarto" maxlength="5"
-                            value="#{ClienteMBean.quarto}" />
-                    </div> 
-                    <div class="form-group">
-                        <label for="senha">Senha</label>
-                        <h:inputText id="senha" maxlength="4"
-                            value="#{ClienteMBean.senha}" />
-                    </div>   
-                    <h:commandButton id="submit" value="Enviar" action="resposta" />
-                </h:form> 
-                
-            <h4><h:outputText escape="false" value="#{ClienteMBean.foi}"/></h4>
 
-            
+        <div class="midButton">
+
+            <h1>Login de Clientes</h1>
+
+
+            <br/>
+
+
+            <h:form>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <h:inputText id="email" value="#{LoginUsuario.usuario.email}" />
+                </div> 
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <h:inputText id="senha" value="#{LoginUsuario.usuario.senha}" />
+                </div>   
+                <h:commandButton id="submit" value="Login" action="#{LoginUsuario.login()}" />
+            </h:form> 
+
+            <h4><h:outputText escape="false" value="#{LoginUsuario.erros}"/></h4>
+
+
         </div>
-        
+
     </h:body>
 </html>
 

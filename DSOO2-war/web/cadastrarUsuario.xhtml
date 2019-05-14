@@ -18,19 +18,19 @@ and open the template in the editor.
         <h:form>
             <h1>Novo Usuário</h1>
             <p>Nome</p>
-            <p><p:inputText title="Nome:" value="#{ClienteMBean.usuario.nome}" /></p>
+            <p><p:inputText title="Nome:" value="#{CadastrarUsuario.usuario.nome}" /></p>
             <p>Telefone</p>        
-            <p><p:inputText label="Telefone:" value="#{ClienteMBean.usuario.telefone}" /></p>
+            <p><p:inputText label="Telefone:" value="#{CadastrarUsuario.usuario.telefone}" /></p>
             <p>Email</p>
-            <p><p:inputText label="Email:" value="#{ClienteMBean.usuario.email}" /></p>
+            <p><p:inputText label="Email:" value="#{CadastrarUsuario.usuario.email}" /></p>
             <p>Senha</p>
-            <p><p:inputText label="Senha:" value="#{ClienteMBean.usuario.senha}" /></p>
-            <p><h:commandButton value="Cadastrar" id="cadastrar" action="#{ClienteMBean.cadastrarUsuario()}" styleClass="ui-priority-primary" /></p>
-            <h4><h:outputText escape="false" value="#{ClienteMBean.cpfJahExiste()}"/></h4>
+            <p><p:inputText label="Senha:" value="#{CadastrarUsuario.usuario.senha}" /></p>
+            <p><h:commandButton value="Cadastrar" id="cadastrar" action="#{CadastrarUsuario.cadastrarUsuario()}" styleClass="ui-priority-primary" /></p>
             <div class="leftButton">
-                <a href="faces/checkIn.xhtml">
-                    <button type="button" class="btn btn-outline-dark">Cancelar</button>
+                <a href="faces/index.xhtml">
+                    <button type="button" class="btn btn-outline-dark">Voltar</button>
                 </a>
-            </div>         </h:form> 
+            </div>         
+        </h:form> 
     </body>
 </html>

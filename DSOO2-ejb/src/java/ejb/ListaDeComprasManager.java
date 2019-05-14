@@ -18,7 +18,7 @@ import javax.persistence.Query;
  */
 @Stateless
 @LocalBean
-public class ProdutoManager {
+public class ListaDeComprasManager {
 
 
     @PersistenceContext(unitName = "persistenceUnit")
@@ -35,8 +35,9 @@ public class ProdutoManager {
     }
     
     
-    public List<Produto> getAllQuartos() {
-        Query query = em.createNamedQuery("HotelQuartos.findAll");
+    public List<ListaDeCompras> getAllListasByUser(long idUsuario) {
+        Query query = em.createNamedQuery("ListaDeCompras.findByUserId");
+        query.setParameter("idUsuario", idUsuario);
         return query.getResultList();
     } 
     
