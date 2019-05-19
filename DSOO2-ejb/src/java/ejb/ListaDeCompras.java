@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ejb;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,13 +14,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-/**
- *
- * @author root
- */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "ListaDeCompras.findAll", query = "SELECT l FROM ListaDeCompras l")})
+    @NamedQuery(name = "ListaDeCompras.findAll", query = "SELECT l FROM ListaDeCompras l")
+    ,
+    @NamedQuery(name = "ListaDeCompras.findById", query = "SELECT l FROM ListaDeCompras l where l.id = :id")})
 public class ListaDeCompras implements Serializable {
 
     @ManyToMany(mappedBy = "listasDeCompras", fetch = FetchType.EAGER)
@@ -43,9 +37,7 @@ public class ListaDeCompras implements Serializable {
         this.usuarios = usuarios;
     }
 
-    
-    
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Item> itens;
 
     public List<Item> getItens() {
@@ -54,6 +46,13 @@ public class ListaDeCompras implements Serializable {
 
     public void setItens(List<Item> itens) {
         this.itens = itens;
+    }
+
+    public String getUsuariosNames() {
+        if (this.usuarios != null && this.usuarios.size() > 0) {
+            return this.usuarios.stream().map(o -> o.getNome()).collect(Collectors.joining(", "));
+        }
+        return "Nenhum";
     }
 
     public Long getId() {

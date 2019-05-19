@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Lista de compras</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
+        <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+
+        <div>Olá #{loginUsuario.usuarioLogado.nome}</div>
+
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Itens"/></h1>
+                <p:dataTable var="item" value="#{listaBean.listaItens()}">
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{item.nome}" />
+                    </p:column>
+                    <p:column headerText="Qtd">
+                        <h:outputText value="#{item.quantidade}" /> 
+                    </p:column>
+                    <p:column headerText="Usuários">
+                        <h:commandButton value="+" type="submit" action="#{listaBean.somaItem(item.id)}" />
+                        <h:commandButton value="-" type="submit" action="#{listaBean.subtraiItem(item.id)}" />
+                        <h:commandButton value="Remover" type="submit" action="#{listaBean.removeItem(item.id)}" />
+                    </p:column>
+                </p:dataTable>
+
+                <h:inputText value="#{listaBean.nomeItem}" />
+                <h:commandButton value="Adicionar Item" type="submit" action="#{listaBean.adicionarItem()}" />
+                <h:commandButton value="Remover Lista" type="submit" action="#{listaBean.remover()}" />
+            </h:form>
+        </f:view>
+
+        <p:dataTable var="usuario" value="#{listaBean.todosUsuarios}">
+            <p:column headerText="Nome">
+                <h:outputText value="#{usuario.nome}" /> 
+            </p:column>
+            <p:column headerText="Ações">
+                <h:form>
+                    <h:commandButton value="Compartilhar lista" type="submit" action="#{listaBean.compartilhar(usuario.id)}" />
+
+                </h:form>
+            </p:column>
+        </p:dataTable>
+
+        <a href="faces/listarListas.xhtml">
+            <button type="button" class="btn btn-dark">Voltar</button>
+        </a>
+
+        <br/>
+
+    </h:body>
+</html>
+

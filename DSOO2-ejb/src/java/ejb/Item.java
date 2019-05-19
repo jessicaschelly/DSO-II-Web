@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ejb;
 
 import java.io.Serializable;
@@ -12,10 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-/**
- *
- * @author root
- */
 @Entity
 public class Item implements Serializable {
 
@@ -25,10 +16,9 @@ public class Item implements Serializable {
     private Long id;
 
     @ManyToOne
-    private Produto produto;
-
-    @ManyToOne
     private ListaDeCompras listaDeCompras;
+    private int quantidade;
+    private String nome;
 
     public ListaDeCompras getListaDeCompras() {
         return listaDeCompras;
@@ -38,7 +28,6 @@ public class Item implements Serializable {
         this.listaDeCompras = listaDeCompras;
     }
 
-    private int quantidade;
 
     public int getQuantidade() {
         return quantidade;
@@ -48,20 +37,21 @@ public class Item implements Serializable {
         this.quantidade = quantidade;
     }
 
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     @Override

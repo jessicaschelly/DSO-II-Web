@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import ejb.ListaDeComprasManager;
 import ejb.UsuarioManager;
 import ejb.Usuario;
 import java.io.IOException;
@@ -12,20 +13,28 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 
-
-@Named(value = "CadastrarUsuario")
+@Named(value = "editarUsuario")
 @RequestScoped
-public class CadastrarUsuario {
+public class EditarUsuario {
 
     @EJB
-    private UsuarioManager cliente;
+    private UsuarioManager usuarioManager;
+    @Inject
+    private LoginUsuario loginUsuario;
 
-    public void cadastrarUsuario() throws IOException {
-        ExternalContext eContext = FacesContext.getCurrentInstance().getExternalContext();
-        cliente.create(usuario);
-        eContext.redirect("loginUsuario.xhtml");
+    public String salvar() throws IOException {
+        Usuario managed = usuarioManager.getById(loginUsuario.getIdUsuarioLogado());
+
+        managed.setNome(loginUsuario.getUsuarioLogado().getNome());
+        managed.setSenha(loginUsuario.getUsuarioLogado().getSenha());
+        managed.setTelefone(loginUsuario.getUsuarioLogado().getTelefone());
+
+        usuarioManager.update(managed);
+
+        return "listarListas";
     }
 
     private Usuario usuario = new Usuario();
@@ -38,7 +47,8 @@ public class CadastrarUsuario {
         this.usuario = usuario;
     }
 
-    public CadastrarUsuario() {
+    public EditarUsuario() {
+
     }
 
 }

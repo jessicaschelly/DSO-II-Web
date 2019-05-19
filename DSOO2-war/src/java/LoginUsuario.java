@@ -20,40 +20,35 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-/**
- *
- * @author marcoslaydner
- */
+
 @Named(value = "loginUsuario")
 @SessionScoped
 public class LoginUsuario implements Serializable {
 
     @EJB
-    private UsuarioManager manager; 
-    
-    ExternalContext eContext = FacesContext.getCurrentInstance().getExternalContext();
+    private UsuarioManager manager;
+
     private Usuario usuarioLogado;
+    private Usuario usuario = new Usuario();
+    private List<String> erros = new ArrayList<>();
+    private long idListaAtual;
 
-    public Usuario getUsuarioLogado() {
-        return usuarioLogado;
+    public LoginUsuario() {
+        usuario.setEmail("gui");
+        usuario.setSenha("123");
     }
 
-    public void setUsuarioLogado(Usuario usuarioLogado) {
-        this.usuarioLogado = usuarioLogado;
-    }
-    
-    public long getIdUsuarioLogado(){
-        return usuarioLogado.getId();
-    }
-
-    
     public String login() throws IOException {
 
         Usuario x = manager.getByEmail(usuario.getEmail());
 
         if (x != null) {
+            if (!x.getSenha().equals(usuario.getSenha())){
+                erros.add("Senha incorreta");    
+                return null;
+            }
+            erros.clear();
             this.setUsuarioLogado(x);
-//            eContext.redirect("listarListas.xhtml");
             return "listarListas";
         } else {
             erros.add("Usuário não encontrado");
@@ -62,13 +57,26 @@ public class LoginUsuario implements Serializable {
 
     }
 
-    private List<String> erros = new ArrayList<>();
+    public String logout() {
+        usuarioLogado = null;
+        return "index";
+    }
 
     public String getErros() {
         return String.join("\n", erros);
     }
 
-    private Usuario usuario = new Usuario();
+    public Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
+    public void setUsuarioLogado(Usuario usuarioLogado) {
+        this.usuarioLogado = usuarioLogado;
+    }
+
+    public long getIdUsuarioLogado() {
+        return usuarioLogado.getId();
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -78,9 +86,12 @@ public class LoginUsuario implements Serializable {
         this.usuario = usuario;
     }
 
-    public LoginUsuario() {
-        usuario.setEmail("gui");
-        usuario.setSenha("123");
+    public long getIdListaAtual() {
+        return idListaAtual;
+    }
+
+    public void setIdListaAtual(long idListaAtual) {
+        this.idListaAtual = idListaAtual;
     }
 
 }

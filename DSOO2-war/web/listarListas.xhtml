@@ -5,39 +5,54 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Listas de compras</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
         <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body>
 
         <div>Olá #{loginUsuario.usuarioLogado.nome}</div>
-        
-        <f:view>
-            <h:form>
-                <h1><h:outputText value="Listas de compras"/></h1>
-                <p:dataTable var="cliente" value="#{ListarListas.listasDeCompras}">
-                    <p:column headerText="Id">
-                        <h:outputText value="#{cliente.toString()}" />
-                    </p:column>
-                    <p:column headerText="Qtd itens">
-                        <h:outputText value="#{cliente.itens}" /> 
-                    </p:column>
-                    <p:column headerText="Qtd usuarios">
-                        <h:outputText value="#{cliente.usuarios}" />
-                    </p:column>
-                </p:dataTable>
 
-            </h:form>
+        <f:view>
+            <!--<h:form>-->
+            <h1><h:outputText value="Listas de compras"/></h1>
+            <p:dataTable var="lista" value="#{ListarListas.listasDeCompras}">
+                <p:column headerText="Id">
+                    <h:outputText value="#{lista.id}" />
+                </p:column>
+                <p:column headerText="Qtd itens">
+                    <h:outputText value="#{lista.itens.size()}" /> 
+                </p:column>
+                <p:column headerText="Usuarios">
+                    <h:outputText value="#{lista.usuariosNames}" />
+                </p:column>
+                <p:column headerText="Ações">
+                    <h:form>
+                        <h:commandButton value="Editar" type="submit" action="#{ListarListas.editarLista(lista.id)}" />
+                    </h:form>                   
+                </p:column>
+
+            </p:dataTable>
+
+            <!--</h:form>-->
         </f:view>
 
         <h:form>
             <h:commandButton value="Criar lista" type="submit" action="#{ListarListas.criarLista}" />
+            <a href="faces/editarUsuario.xhtml">
+                    <button type="button" class="btn btn-outline-dark">Editar usuário</button>
+                </a>
+            <h:commandButton value="Logout" type="submit" action="#{loginUsuario.logout()}" />
+
         </h:form>
         
+        
+        
+
+
         <br/>
 
-        
+
 
 
 

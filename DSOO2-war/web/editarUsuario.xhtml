@@ -7,22 +7,20 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
-        <title>Cadastro de Usuários</title>
+        <title>Edição de Usuários</title>
     </h:head>
     <body>
         <h:form>
-            <h1>Novo Usuário</h1>
+            <h1>Editar usuário</h1>
             <p>Nome</p>
-            <p><p:inputText title="Nome:" value="#{CadastrarUsuario.usuario.nome}" /></p>
+            <p><p:inputText title="Nome:" value="#{loginUsuario.usuarioLogado.nome}" /></p>
             <p>Telefone</p>        
-            <p><p:inputText label="Telefone:" value="#{CadastrarUsuario.usuario.telefone}" /></p>
-            <p>Email</p>
-            <p><p:inputText label="Email:" value="#{CadastrarUsuario.usuario.email}" /></p>
+            <p><p:inputText label="Telefone:" value="#{loginUsuario.usuarioLogado.telefone}" /></p>
             <p>Senha</p>
-            <p><p:inputText label="Senha:" value="#{CadastrarUsuario.usuario.senha}" /></p>
-            <p><h:commandButton value="Cadastrar" id="cadastrar" action="#{CadastrarUsuario.cadastrarUsuario()}" styleClass="ui-priority-primary" /></p>
+            <p><p:inputText label="Senha:" value="#{loginUsuario.usuarioLogado.senha}" /></p>
+            <p><h:commandButton value="Salvar" action="#{editarUsuario.salvar()}" styleClass="ui-priority-primary" /></p>
             <div class="leftButton">
-                <a href="faces/index.xhtml">
+                <a href="faces/listarListas.xhtml">
                     <button type="button" class="btn btn-outline-dark">Voltar</button>
                 </a>
             </div>         
