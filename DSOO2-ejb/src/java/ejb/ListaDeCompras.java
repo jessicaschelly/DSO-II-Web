@@ -7,7 +7,9 @@ package ejb;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,10 +24,10 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "ListaDeCompras.findByUserId", query = "SELECT l FROM ListaDeCompras l WHERE  :idUsuario in (l.usuarios) ")})
+    @NamedQuery(name = "ListaDeCompras.findAll", query = "SELECT l FROM ListaDeCompras l")})
 public class ListaDeCompras implements Serializable {
 
-    @ManyToMany(mappedBy = "listasDeCompras")
+    @ManyToMany(mappedBy = "listasDeCompras", fetch = FetchType.EAGER)
     private List<Usuario> usuarios;
 
     private static final long serialVersionUID = 1L;
@@ -43,7 +45,7 @@ public class ListaDeCompras implements Serializable {
 
     
     
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Item> itens;
 
     public List<Item> getItens() {

@@ -11,35 +11,34 @@
     </h:head>
     <h:body>
 
-
+        <div>Olá #{loginUsuario.usuarioLogado.nome}</div>
+        
         <f:view>
             <h:form>
                 <h1><h:outputText value="Listas de compras"/></h1>
                 <p:dataTable var="cliente" value="#{ListarListas.listasDeCompras}">
                     <p:column headerText="Id">
-                        <h:outputText value="#{cliente.id}" />
+                        <h:outputText value="#{cliente.toString()}" />
                     </p:column>
                     <p:column headerText="Qtd itens">
-                        <h:outputText value="#{cliente.itens.size}" /> 
+                        <h:outputText value="#{cliente.itens}" /> 
                     </p:column>
                     <p:column headerText="Qtd usuarios">
-                        <h:outputText value="#{cliente.usuarios.size}" />
+                        <h:outputText value="#{cliente.usuarios}" />
                     </p:column>
                 </p:dataTable>
+
             </h:form>
         </f:view>
 
-        <div class="midButton">
-            <button type="button" class="btn btn-outline-dark" action="#{ListarListas.criarLista()}">Criar lista de compras</button>
-        </div> 
-
+        <h:form>
+            <h:commandButton value="Criar lista" type="submit" action="#{ListarListas.criarLista}" />
+        </h:form>
+        
         <br/>
 
-        <div class="midButton">
-            <a href="faces/index.xhtml">
-                <button type="button" class="btn btn-outline-dark">Sair</button>
-            </a>
-        </div>
+        
+
 
 
 

@@ -45,9 +45,14 @@ public class UsuarioManager {
         return (Usuario) list.get(0);
     }
 
-    public void update(Usuario cliente) {
-        em.merge(cliente);
+    public Usuario update(Usuario cliente) {
+        Usuario u = em.merge(cliente);
         em.flush();
+        return u;
+    }
+
+    public Usuario getById(long id) {
+        return em.find(Usuario.class, id);
     }
 
 }

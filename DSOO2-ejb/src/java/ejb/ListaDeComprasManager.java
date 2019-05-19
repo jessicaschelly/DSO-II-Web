@@ -26,6 +26,7 @@ public class ListaDeComprasManager {
 
     public void create(Object object) {
         em.persist(object);
+        em.flush();
     }
 
   
@@ -36,9 +37,9 @@ public class ListaDeComprasManager {
     
     
     public List<ListaDeCompras> getAllListasByUser(long idUsuario) {
-        Query query = em.createNamedQuery("ListaDeCompras.findByUserId");
-        query.setParameter("idUsuario", idUsuario);
-        return query.getResultList();
+        Query query = em.createNamedQuery("ListaDeCompras.findAll");
+        List<ListaDeCompras> result = query.getResultList();
+        return result;
     } 
     
     public int getMaxNumero() {  // pega o maior ID de cliente na tabela
@@ -48,6 +49,10 @@ public class ListaDeComprasManager {
  
     public void cadastrarQuarto(Produto hQuartos) {
         em.persist(hQuartos);
+    }
+
+    public void refresh(Usuario usuarioLogado) {
+        em.refresh(usuarioLogado);
     }
   
 }

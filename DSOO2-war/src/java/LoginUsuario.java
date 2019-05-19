@@ -5,43 +5,59 @@
  */
 
 import ejb.UsuarioManager;
-import ejb.ProdutoManager;
 import ejb.Usuario;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.ejb.SessionBean;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.persistence.Query;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author marcoslaydner
  */
-@Named(value = "LoginUsuario")
-@RequestScoped
-public class LoginUsuario {
+@Named(value = "loginUsuario")
+@SessionScoped
+public class LoginUsuario implements Serializable {
 
     @EJB
-    private UsuarioManager manager;
-
-    FacesContext context = FacesContext.getCurrentInstance();
-    HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+    private UsuarioManager manager; 
+    
     ExternalContext eContext = FacesContext.getCurrentInstance().getExternalContext();
+    private Usuario usuarioLogado;
 
-    public void login() throws IOException {
+    public Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
+    public void setUsuarioLogado(Usuario usuarioLogado) {
+        this.usuarioLogado = usuarioLogado;
+    }
+    
+    public long getIdUsuarioLogado(){
+        return usuarioLogado.getId();
+    }
+
+    
+    public String login() throws IOException {
 
         Usuario x = manager.getByEmail(usuario.getEmail());
 
         if (x != null) {
-            session.setAttribute("usuarioLogado", x);
-            eContext.redirect("listarListas.xhtml");
+            this.setUsuarioLogado(x);
+//            eContext.redirect("listarListas.xhtml");
+            return "listarListas";
         } else {
             erros.add("Usuário não encontrado");
+            return null;
         }
 
     }
@@ -63,6 +79,8 @@ public class LoginUsuario {
     }
 
     public LoginUsuario() {
+        usuario.setEmail("gui");
+        usuario.setSenha("123");
     }
 
 }

@@ -13,10 +13,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.el.ELContext;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.Application;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
 
@@ -31,26 +35,28 @@ public class ListarListas {
     @EJB
     private UsuarioManager usuarioManager;
     
-     @EJB
+    @EJB
     private ListaDeComprasManager listaDeComprasManager;
      
-    FacesContext context = FacesContext.getCurrentInstance();
-    HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-    ExternalContext eContext = FacesContext.getCurrentInstance().getExternalContext();
-
     public ListarListas() {
     }
     
     public List<ListaDeCompras> getListasDeCompras(){
-        Usuario logado = (Usuario)session.getAttribute("usuarioLogado");
-        return listaDeComprasManager.getAllListasByUser(logado.getId());
+        return listaDeComprasManager.getAllListasByUser(loginUsuario.getUsuarioLogado().getId());
     }
     
+    @Inject
+    private LoginUsuario loginUsuario;
+
     public void criarLista(){
-        ListaDeCompras listaDeCompras = new ListaDeCompras();
-        listaDeCompras.setUsuarios(new ArrayList<>());
-        listaDeCompras.getUsuarios().add((Usuario)session.getAttribute("usuarioLogado"));
-        listaDeComprasManager.create(listaDeCompras);
+        Usuario managed = usuarioManager.getById(loginUsuario.getIdUsuarioLogado());
+
+        ListaDeCompras listaDeCompras = new ListaDeCompras();         
+        managed.getListasDeCompras().add(listaDeCompras);
+        
+        loginUsuario.setUsuarioLogado(usuarioManager.update(managed));
+//        listaDeCompras.getUsuarios().add(loginUsuario.getUsuarioLogado());;
+//        listaDeComprasManager.create(listaDeCompras);
     }
 
 }

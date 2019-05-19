@@ -1,5 +1,5 @@
-
-/* styles for JSF 2.0 Introduction project */
+/*
+ styles for JSF 2.0 Introduction project 
 
 body {
   margin: 0;
@@ -80,11 +80,11 @@ input { margin: 5px }
 
 .container {
     text-align: center;
-  padding: 20px; /* Give us some breathing room */
-  /* Additional */
+  padding: 20px;  Give us some breathing room 
+   Additional 
   display: flex;
   justify-content: center;
-  /* Further Additions */
+   Further Additions 
   position: absolute;
   left: 0;
   right: 0;
@@ -98,4 +98,8 @@ h1 {
 
 .midButton {
     text-align: center;
+}*/
+
+.btn{
+    background-color: red
 }

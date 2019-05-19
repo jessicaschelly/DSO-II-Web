@@ -7,8 +7,10 @@ package ejb;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +40,7 @@ public class Usuario implements Serializable {
 
     private String telefone;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ListaDeCompras> listasDeCompras;
 
     public List<ListaDeCompras> getListasDeCompras() {

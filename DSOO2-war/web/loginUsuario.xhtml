@@ -8,13 +8,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
         <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
-        <title>Login de Clientes</title>
+        <title>Login</title>
     </h:head>
     <h:body>
 
         <div class="midButton">
 
-            <h1>Login de Clientes</h1>
+            <h1>Login</h1>
 
 
             <br/>
@@ -23,16 +23,16 @@
             <h:form>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <h:inputText id="email" value="#{LoginUsuario.usuario.email}" />
+                    <h:inputText id="email" value="#{loginUsuario.usuario.email}" />
                 </div> 
                 <div class="form-group">
                     <label for="senha">Senha</label>
-                    <h:inputText id="senha" value="#{LoginUsuario.usuario.senha}" />
+                    <h:inputText id="senha" value="#{loginUsuario.usuario.senha}" />
                 </div>   
-                <h:commandButton id="submit" value="Login" action="#{LoginUsuario.login()}" />
+                <h:commandButton id="submit" value="Login" action="#{loginUsuario.login()}" />
             </h:form> 
 
-            <h4><h:outputText escape="false" value="#{LoginUsuario.erros}"/></h4>
+            <h4><h:outputText escape="false" value="#{loginUsuario.erros}"/></h4>
 
 
         </div>
