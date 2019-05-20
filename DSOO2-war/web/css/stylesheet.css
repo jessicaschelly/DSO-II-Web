@@ -101,5 +101,67 @@ h1 {
 }*/
 
 .btn{
-    background-color: red
+    background-color: green;
+    color:white;
+}
+
+.btn-lista{
+    background-color: green;
+    color:white;
+    margin-top: 20px;
+}
+
+.primeira-tela{
+    width: 70%;
+    margin: auto;
+    height: 100%;
+    margin-top: 80px;
+    text-align: center;   
+}
+
+.midButton{
+     width: 70%;
+    margin: auto;
+    height: 100%;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.botoes-listar {
+    margin: 10px 15px;
+}
+
+.logout{
+    color: white;
+    background-color: red;
+}
+
+.boas-vindas-user{
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.titleLista{
+    text-align:center;
+}
+
+#j_idt5{
+     width: 70%;
+    margin: auto;
+    height: 100%;
+    margin-top: 80px;
+    text-align: center;   
+}
+
+.itens{
+    margin-bottom: 30px;
+}
+
+.acoes{
+    margin-bottom:30px;
+}
+
+.remover-lista{
+    color:white;
+    background:red;
 }

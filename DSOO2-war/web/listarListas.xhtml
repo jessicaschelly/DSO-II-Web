@@ -11,11 +11,11 @@
     </h:head>
     <h:body>
 
-        <div>Olá #{loginUsuario.usuarioLogado.nome}</div>
+        <h3 class="boas-vindas-user">Olá, #{loginUsuario.usuarioLogado.nome}!</h3>
 
         <f:view>
             <!--<h:form>-->
-            <h1><h:outputText value="Listas de compras"/></h1>
+            <h1 class="titleLista"><h:outputText value="Listas de compras"/></h1>
             <p:dataTable var="lista" value="#{ListarListas.listasDeCompras}">
                 <p:column headerText="Id">
                     <h:outputText value="#{lista.id}" />
@@ -38,12 +38,15 @@
         </f:view>
 
         <h:form>
+            <div class="botoes-listar">
             <h:commandButton value="Criar lista" type="submit" action="#{ListarListas.criarLista}" />
             <a href="faces/editarUsuario.xhtml">
-                    <button type="button" class="btn btn-outline-dark">Editar usuário</button>
+                    <button type="button">Editar usuário</button>
                 </a>
-            <h:commandButton value="Logout" type="submit" action="#{loginUsuario.logout()}" />
-
+            
+            <h:commandButton class="logout" value="Logout" type="submit" action="#{loginUsuario.logout()}" />
+           </div>
+       
         </h:form>
         
         

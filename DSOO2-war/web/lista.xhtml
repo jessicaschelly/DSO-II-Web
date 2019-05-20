@@ -11,11 +11,12 @@
         <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body>
-
-        <div>Olá #{loginUsuario.usuarioLogado.nome}</div>
-
+        
         <f:view>
+            
             <h:form>
+                
+                <div class="itens">
                 <h1><h:outputText value="Itens"/></h1>
                 <p:dataTable var="item" value="#{listaBean.listaItens()}">
                     <p:column headerText="Nome">
@@ -30,10 +31,12 @@
                         <h:commandButton value="Remover" type="submit" action="#{listaBean.removeItem(item.id)}" />
                     </p:column>
                 </p:dataTable>
-
+                </div>
+                <div class="acoes">
                 <h:inputText value="#{listaBean.nomeItem}" />
                 <h:commandButton value="Adicionar Item" type="submit" action="#{listaBean.adicionarItem()}" />
-                <h:commandButton value="Remover Lista" type="submit" action="#{listaBean.remover()}" />
+                <h:commandButton class="remover-lista" value="Excluir Lista" type="submit" action="#{listaBean.remover()}" />
+                </div>
             </h:form>
         </f:view>
 
@@ -50,7 +53,7 @@
         </p:dataTable>
 
         <a href="faces/listarListas.xhtml">
-            <button type="button" class="btn btn-dark">Voltar</button>
+            <button type="button" class="btn-lista">Voltar</button>
         </a>
 
         <br/>

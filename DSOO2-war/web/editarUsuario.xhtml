@@ -11,6 +11,7 @@
     </h:head>
     <body>
         <h:form>
+            <div class="edicao">
             <h1>Editar usuário</h1>
             <p>Nome</p>
             <p><p:inputText title="Nome:" value="#{loginUsuario.usuarioLogado.nome}" /></p>
@@ -18,12 +19,13 @@
             <p><p:inputText label="Telefone:" value="#{loginUsuario.usuarioLogado.telefone}" /></p>
             <p>Senha</p>
             <p><p:inputText label="Senha:" value="#{loginUsuario.usuarioLogado.senha}" /></p>
-            <p><h:commandButton value="Salvar" action="#{editarUsuario.salvar()}" styleClass="ui-priority-primary" /></p>
+            <p><h:commandButton value="Salvar" action="#{editarUsuario.salvar()}" /></p>
             <div class="leftButton">
                 <a href="faces/listarListas.xhtml">
-                    <button type="button" class="btn btn-outline-dark">Voltar</button>
+                    <button type="button" class="btn">Voltar</button>
                 </a>
-            </div>         
+            </div>  
+            </div>
         </h:form> 
     </body>
 </html>

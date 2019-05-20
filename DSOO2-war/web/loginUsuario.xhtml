@@ -22,11 +22,11 @@
 
             <h:form>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">E-mail: </label>
                     <h:inputText id="email" value="#{loginUsuario.usuario.email}" />
                 </div> 
                 <div class="form-group">
-                    <label for="senha">Senha</label>
+                    <label for="senha">Senha: </label>
                     <h:inputSecret id="senha" value="#{loginUsuario.usuario.senha}" />
                     
                 </div>   
@@ -34,11 +34,12 @@
 
 
             </h:form> 
+            <div>
             <a href="faces/index.xhtml">
                 <button type="button" class="btn btn-dark">Voltar</button>
             </a>
             <h4><h:outputText escape="false" value="#{loginUsuario.erros}"/></h4>
-
+            </div>
 
         </div>
 
