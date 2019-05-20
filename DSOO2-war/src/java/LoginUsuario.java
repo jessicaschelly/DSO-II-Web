@@ -34,20 +34,18 @@ public class LoginUsuario implements Serializable {
     private long idListaAtual;
 
     public LoginUsuario() {
-        usuario.setEmail("gui");
-        usuario.setSenha("123");
     }
 
     public String login() throws IOException {
+        erros.clear();
 
         Usuario x = manager.getByEmail(usuario.getEmail());
-
+        
         if (x != null) {
             if (!x.getSenha().equals(usuario.getSenha())){
                 erros.add("Senha incorreta");    
                 return null;
             }
-            erros.clear();
             this.setUsuarioLogado(x);
             return "listarListas";
         } else {

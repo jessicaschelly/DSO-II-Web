@@ -120,8 +120,23 @@ public class ListaBean {
         usuarioManager.update(usuario);
     }
 
-    public void remover() {
-
+    public String remover() {
+        ListaDeCompras lista = listaDeComprasManager.getListaById(loginUsuario.getIdListaAtual());
+        for (Usuario u : lista.getUsuarios()) {
+            List<ListaDeCompras> toRemove = new ArrayList<>();
+            for (ListaDeCompras l : u.getListasDeCompras()) {
+                if (l.getId().equals(loginUsuario.getIdListaAtual())) {
+                    toRemove.add(l);
+                }
+            }
+            for (ListaDeCompras l : toRemove) {
+              u.getListasDeCompras().remove(l);
+                
+            }
+             usuarioManager.update(u);
+        }
+        
+        return "listarListas";
     }
 
     //GET SET
